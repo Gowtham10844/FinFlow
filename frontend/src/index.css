@@ -1,0 +1,126 @@
+@tailwind base;
+
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    background-color: #f8fafc; /* slate-50 */
+    color: #1e293b;            /* slate-800 */
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* ── Card ── */
+  .card {
+    background-color: #ffffff;
+    border-radius: 1rem;         /* rounded-2xl */
+    padding: 1.25rem;            /* p-5 */
+    border: 1px solid #dbeafe;  /* brand-100 */
+    box-shadow: 0 1px 4px 0 rgba(37,99,235,0.08), 0 0 0 1px rgba(37,99,235,0.06);
+    transition: box-shadow 0.18s ease;
+  }
+  .card:hover {
+    box-shadow: 0 4px 20px 0 rgba(37,99,235,0.14);
+  }
+
+  /* ── Primary button ── */
+  .btn-primary {
+    background-color: #2563eb;   /* brand-600 */
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;      /* rounded-xl */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 1px 3px 0 rgba(37,99,235,0.25);
+  }
+  .btn-primary:hover  { background-color: #1d4ed8; } /* brand-700 */
+  .btn-primary:active { background-color: #1e40af; } /* brand-800 */
+  .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; }
+
+  /* ── Secondary button ── */
+  .btn-secondary {
+    background-color: #ffffff;
+    color: #1d4ed8;              /* brand-700 */
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #bfdbfe;  /* brand-200 */
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    box-shadow: 0 1px 2px 0 rgba(37,99,235,0.06);
+  }
+  .btn-secondary:hover { background-color: #eff6ff; } /* brand-50 */
+
+  /* ── Input / select ── */
+  .input {
+    background-color: #ffffff;
+    border: 1px solid #bfdbfe;  /* brand-200 */
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: #1e293b;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .input::placeholder { color: #94a3b8; }
+  .input:focus {
+    border-color: #60a5fa;      /* brand-400 */
+    box-shadow: 0 0 0 3px rgba(96,165,250,0.25);
+  }
+
+  /* ── Page headings ── */
+  .page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3a8a; /* brand-900 */
+  }
+  .page-sub {
+    color: #64748b; /* slate-500 */
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Sidebar nav ── */
+  .nav-active {
+    background-color: #2563eb; /* brand-600 */
+    color: #ffffff;
+    box-shadow: 0 1px 4px 0 rgba(37,99,235,0.3);
+  }
+  .nav-inactive {
+    color: #475569; /* slate-600 */
+  }
+  .nav-inactive:hover {
+    background-color: #eff6ff; /* brand-50 */
+    color: #1d4ed8;            /* brand-700 */
+  }
+
+  /* ── Badges ── */
+  .badge-income  { display:inline-block; padding:0.125rem 0.5rem; font-size:0.75rem; font-weight:600; border-radius:9999px; background:#dcfce7; color:#15803d; }
+  .badge-expense { display:inline-block; padding:0.125rem 0.5rem; font-size:0.75rem; font-weight:600; border-radius:9999px; background:#fee2e2; color:#dc2626; }
+}
+
+/* ── Fade-in animation ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.22s ease forwards; }
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
