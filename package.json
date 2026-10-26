@@ -1,0 +1,15 @@
+{
+  "name": "finflow-root",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --names BACKEND,FRONTEND --prefix-colors green,cyan \"cd backend && npm start\" \"cd frontend && npm run dev\"",
+    "dev:backend": "cd backend && npm start",
+    "dev:frontend": "cd frontend && npm run dev",
+    "db:setup": "cd backend && node utils/setupDb.js",
+    "db:seed": "cd backend && node utils/seedAdminData.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
