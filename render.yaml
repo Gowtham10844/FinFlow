@@ -1,0 +1,28 @@
+# Render Blueprint — one Web Service (Express serves the API + built React SPA)
+# plus one free Postgres. See the deploy notes in the repo for one-time DB setup.
+databases:
+  - name: finflow-db
+    plan: free
+    databaseName: finflow
+    user: finflow
+
+services:
+  - type: web
+    name: finflow
+    runtime: node
+    plan: free
+    buildCommand: >-
+      npm --prefix backend install &&
+      npm --prefix frontend install --include=dev &&
+      npm --prefix frontend run build
+    startCommand: npm --prefix backend start
+    envVars:
+      - { key: DB_HOST,     fromDatabase: { name: finflow-db, property: host } }
+      - { key: DB_PORT,     fromDatabase: { name: finflow-db, property: port } }
+      - { key: DB_NAME,     fromDatabase: { name: finflow-db, property: database } }
+      - { key: DB_USER,     fromDatabase: { name: finflow-db, property: user } }
+      - { key: DB_PASSWORD, fromDatabase: { name: finflow-db, property: password } }
+      - { key: DB_SSL,         value: "true" }
+      - { key: JWT_SECRET,     generateValue: true }
+      - { key: JWT_EXPIRES_IN, value: "7d" }
+      - { key: CLIENT_URL,     value: "*" }   # same-origin serving → CORS unused
