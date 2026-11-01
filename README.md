@@ -1,5 +1,11 @@
 # FinFlow — Expense & Personal Finance Management Platform (v2.0)
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-finflow--pita.onrender.com-success?style=for-the-badge&logo=render)](https://finflow-pita.onrender.com)
+
+> 🚀 **Live Application:** [https://finflow-pita.onrender.com](https://finflow-pita.onrender.com)  
+> **Demo User:** `user@finflow.com` / `User@123`  
+> **Admin Console:** `admin@finflow.com` / `Admin@123` (at `/admin/login`)
+
 Full-stack implementation matching the project documentation and v2.0 database
 schema reference: React + Tailwind frontend, Node/Express backend, PostgreSQL
 database with ENUM types, TIMESTAMPTZ timestamps, soft-delete + audit trail.
