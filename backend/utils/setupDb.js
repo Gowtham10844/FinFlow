@@ -20,7 +20,7 @@ async function setup() {
   await pool.query(
     `INSERT INTO users (name, email, password, role)
      VALUES ($1, $2, $3, 'admin'), ($4, $5, $6, 'user')
-     ON CONFLICT (email) DO UPDATE SET password = EXCLUDED.password, status = 'active'`,
+     ON CONFLICT (email) DO NOTHING`,
     ['Admin User', 'admin@finflow.com', adminHash, 'Demo User', 'user@finflow.com', userHash]
   );
 

@@ -20,7 +20,6 @@ app.use(helmet());
 app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(errorHandler);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'finflow-api' }));
 
@@ -41,10 +40,7 @@ app.use(express.static(distPath));
 app.get('*', (req, res) => res.sendFile(path.join(distPath, 'index.html')));
 
 // Central error handler
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ error: 'Internal server error' });
-});
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`FinFlow API running on port ${PORT}`));
